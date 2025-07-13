@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
+## О проекте
+TodoClient - это SPA-приложение на фреймворке Angular без применения серверной части.
+Оно предоставляет возможности для управления задачами:
+-Просмотр списка задач,
+-Просмотр деталей задачи,
+-Создание новой задачи,
+-Редактирование задачи,
+-Удаление задачи,
+-Поиск задач по названию,
+-Фильтрация списка задач по их статусам.
+
+База данных приложения имитируется в памяти, поэтому при перезагрузке SPA-приложения она сбрасывается в первоначальное состояние. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
