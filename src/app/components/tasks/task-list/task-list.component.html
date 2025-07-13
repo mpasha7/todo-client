@@ -1,0 +1,73 @@
+<div class="container">
+    <div *ngIf="!errorObject">
+        <div class="page-title">
+            <h1>Ваши задачи</h1>
+        </div>
+
+        <div class="page-button-container">
+            <button (click)="toTaskForm(-1)" mat-raised-button color="primary" type="button" class="page-button">
+                Добавить задачу
+            </button>
+            <button color="primary" type="button" class="page-button"
+                    mat-stroked-button 
+                    (click)="selectorIsOpen = !selectorIsOpen"
+                    cdkOverlayOrigin 
+                    #trigger="cdkOverlayOrigin">
+                <mat-icon *ngIf="!selectorIsOpen">arrow_drop_down</mat-icon>
+                <mat-icon *ngIf="selectorIsOpen">arrow_drop_up</mat-icon>
+                Фильтр
+            </button>
+            <ng-template cdkConnectedOverlay
+                        [cdkConnectedOverlayOrigin]="trigger"
+                        [cdkConnectedOverlayOpen]="selectorIsOpen">
+                <app-task-list-selector (onSelect)="onTasksSelect($event)" 
+                                        (close)="selectorIsOpen = false"
+                                        [selectParameters]="selectParameters">
+                </app-task-list-selector>
+            </ng-template>
+        </div>
+
+        <div *ngIf="taskList && taskList.length > 0">
+            <mat-card *ngFor="let task of taskList">
+                <mat-card-content>
+                    <div class="page-task-status">
+                        <mat-icon color="primary" *ngIf="task.status == taskStatus.Completed">check_box</mat-icon>
+                        <mat-icon color="primary" *ngIf="task.status == taskStatus.NotCompleted">check_box_outline_blank</mat-icon>
+                        <mat-icon color="primary" *ngIf="task.status == taskStatus.AtWork" fontIcon="settings">settings</mat-icon>
+                        <mat-icon color="primary" *ngIf="task.status == taskStatus.Pause" fontIcon="pause">pause</mat-icon>
+                    </div>
+                    <div class="page-task-title">
+                        <a routerLink="/tasks/{{ task.id }}" class="page-task-link">
+                            {{ task.title }}
+                        </a>
+                    </div>
+                    <div class="text-right">
+                        <button mat-mini-fab color="primary" type="button" 
+                                (click)="toTaskForm(task.id)" class="page-task-button">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-mini-fab color="accent" type="button" 
+                                (click)="onDeleteTask(task.id)" class="page-task-button">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div *ngIf="taskList && taskList.length == 0">
+            <mat-card>
+                <mat-card-content>
+                    <div class="page-task-title">
+                        Здесь пока нет задач
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div *ngIf="errorObject" class="error-text">
+        <h2>{{ errorObject.message }}</h2>
+    </div>
+</div>
+

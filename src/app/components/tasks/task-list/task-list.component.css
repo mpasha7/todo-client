@@ -1,0 +1,13 @@
+.mat-mdc-card-content {
+    display: flex;
+}
+
+.text-right {
+    align-content: center;
+    margin: 0 0 0 auto;
+}
+
+.page-task-link {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,40 @@
+<div class="container">
+    <div *ngIf="!errorObject">
+        <div class="page-title">
+            <h1>Задача: {{ task?.title }}</h1>
+        </div>
+
+        <div class="task-info">
+            <div class="page-row">
+                <mat-icon color="primary" *ngIf="task?.status == taskStatus.Completed">check_box</mat-icon>
+                <mat-icon color="primary" *ngIf="task?.status == taskStatus.NotCompleted">check_box_outline_blank</mat-icon>
+                <mat-icon color="primary" *ngIf="task?.status == taskStatus.AtWork" fontIcon="settings">settings</mat-icon>
+                <mat-icon color="primary" *ngIf="task?.status == taskStatus.Pause" fontIcon="pause">pause</mat-icon>
+                <div class="status-text">
+                    <h4>{{ task?.status }}</h4>
+                </div>
+            </div>
+
+            <div class="page-row">
+                <h4>Описание задачи:</h4>
+            </div>
+
+            <div class="page-row">
+                <p>{{ task?.description }}</p>
+            </div>
+        </div>
+
+        <div class="page-button-container">
+            <button mat-raised-button color="primary" type="button" *ngIf="task" (click)="toTaskForm(task.id)" class="page-button">
+                Редактировать
+            </button>
+            <button mat-stroked-button color="primary" type="button" routerLink="/tasks" class="page-button">
+                Назад
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="errorObject" class="error-text">
+        <h2>{{ errorObject.message }}</h2>
+    </div>
+</div>

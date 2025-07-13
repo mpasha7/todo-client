@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, 
+    "Helvetica Neue", sans-serif; 
+}
+
+.container {
+    text-align: center;
+    margin: 0 25% 0;
+}
+
+.page-title {
+    margin: 50px 0 10px; 
+}
+
+.page-button-container {
+    margin: 30px 0 30px; 
+}
+
+.page-button {
+    margin: 0 20px;
+}
+
+.page-task-title {
+    align-content: center;
+    margin: 0 0 0 15px; 
+}
+
+.page-task-button {
+    margin: 0 15px; 
+}
+
+.page-task-status {
+    align-content: center;
+}
+
+.page-row {
+    display: flex;
+    align-content: center;
+}
+
+.page-row p {
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.form-button {
+    margin: 10px 20px;
+}
+
+.form-header {
+    margin: 10px 0 25px;
+}
+
+.error-text {
+    margin: 50px;
+}

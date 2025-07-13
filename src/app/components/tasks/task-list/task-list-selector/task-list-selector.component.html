@@ -1,0 +1,32 @@
+
+<form [formGroup]="selectForm" (ngSubmit)="select()">
+    <mat-card>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Поиск</mat-label>
+                <input matInput formControlName="search" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Статусы</mat-label>
+                <select matNativeControl formControlName="statuses" multiple>
+                    <option *ngFor="let item of taskStatus|keyvalue"
+                            [value]="item.value"
+                            [selected]="selectParameters?.statuses?.includes(item.value)">
+                        {{ item.value }}
+                    </option>
+                </select>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-fab type="submit" color="primary" class="form-button">
+                <mat-icon>check</mat-icon>
+            </button>
+            <a mat-fab color="accent" (click)="resetSelector()" class="form-button">
+                <mat-icon>refresh</mat-icon>
+            </a>
+            <a mat-fab color="accent" (click)="closeSelector()" class="form-button">
+                <mat-icon>close</mat-icon>
+            </a>
+        </mat-card-actions>
+    </mat-card>
+</form>
